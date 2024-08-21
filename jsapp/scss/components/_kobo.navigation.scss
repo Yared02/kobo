@@ -1,0 +1,403 @@
+@use 'scss/breakpoints';
+@use "scss/_variables";
+@use 'scss/z-indexes';
+@use '~kobo-common/src/styles/colors';
+
+// header and navigation styling
+
+// This element handles stretched background of app header
+.header-stretch-bg {
+  position: absolute;
+  width: 100%;
+  background-color: $layout-header-bg-color;
+  min-height: $layout-desktop-header-height;
+  z-index: 0;
+}
+
+.mdl-layout__header {
+  background-color: $layout-header-bg-color;
+  min-height: $layout-desktop-header-height;
+  margin-left: 0px;
+  width: 100%;
+  z-index: auto;
+
+  .mdl-layout__header-row {
+    height: $layout-desktop-header-height;
+    padding: 0px 12px;
+  }
+
+  .mdl-placeholder {
+    margin-left: auto;
+  }
+
+  .mdl-layout__title {
+    width: 40px;
+  }
+
+  .header__logo {
+    // NOTE: this is overrideable, see `/kpi/templates/index.html`
+    background-image: url("../img/kobologo_symbol.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 40px;
+    height: 40px;
+    // Needed for non-horizontal images
+    background-size: contain;
+    display: block;
+  }
+
+  .login-box {
+    text-align: right;
+  }
+
+  .mdl-layout__title + .login-box {
+    flex: 1;
+  }
+
+  .account-box {
+    margin-left: auto;
+    position: relative;
+    max-width: 115px;
+  }
+
+  .account-box__name {
+    display: inline-block;
+    vertical-align: middle;
+    color: $layout-nav-color;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    max-width: 100%;
+  }
+
+  .mdl-layout__header-searchers {
+    flex-grow: 1;
+  }
+
+  .header__link {
+    color: colors.$kobo-white;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .search {
+    vertical-align: middle;
+    margin: 0px 6px;
+    display: inline-block;
+    width: 60%;
+    position: relative;
+  }
+
+  .search {
+    ::placeholder {
+      color: colors.$kobo-white;
+    }
+
+    .search-input {
+      color: colors.$kobo-white;
+      border: none;
+      border-radius: 0px;
+      padding: 10px 12px;
+      padding-left: 42px;
+      background-color: rgba(colors.$kobo-white, 0.1);
+      font-size: 16px;
+      position: relative;
+      width: 99%;
+    }
+
+    .search__icon,
+    .search__cancel {
+      position: absolute;
+      top: 9px;
+      color: colors.$kobo-white;
+      font-size: 24px;
+    }
+
+    .search__icon {
+      left: 12px;
+    }
+
+    .search__cancel {
+      cursor: pointer;
+      right: 12px;
+    }
+  }
+}
+
+.popover-menu--account-menu {
+  .popover-menu__content {
+    min-width: 240px;
+    z-index: z-indexes.$z-account-menu;
+  }
+}
+
+.account-box__menu {
+  min-width: 270px;
+  max-height: 80vh;
+  overflow-y: auto;
+
+  .account-box__menu-item--avatar {
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: top;
+  }
+
+  .account-box__menu-item--mini-profile {
+    color: colors.$kobo-gray-40;
+    display: inline-block;
+    width: calc(100% - 70px);
+    line-height: 20px;
+    margin-top: 5px;
+    margin-bottom: 12px;
+
+    span {
+      display: inline-block;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .account-username {
+      font-size: 18px;
+    }
+  }
+
+  .account-box__menu-item--settings {
+    text-align: right;
+  }
+
+  .account-box__menu-li {
+    padding: 15px;
+    padding-bottom: 15px;
+
+    a {
+      color: colors.$kobo-gray-40;
+      cursor: pointer;
+      font-weight: normal;
+      display: block;
+
+      i {
+        font-size: 24px;
+        margin: 3px;
+        vertical-align: -6px;
+      }
+
+      span {
+        vertical-align: middle;
+      }
+
+      &:hover {
+        color: colors.$kobo-blue;
+      }
+    }
+
+    &.environment-links {
+      display: flex;
+      justify-content: space-evenly;
+      column-gap: 6px;
+      padding-top: 0;
+
+      a {
+        display: inline-block;
+        font-size: 12px;
+        text-align: center;
+        text-wrap: balance;
+      }
+    }
+  }
+
+  .account-box__menu-li--lang {
+    position: relative;
+    border-top: 1px solid colors.$kobo-gray-92;
+    padding-bottom: 5px;
+
+    ul {
+      margin-top: 5px;
+      background-color: colors.$kobo-white;
+      color: colors.$kobo-gray-40;
+      min-width: 140px;
+      padding: 0;
+      border: 1px solid colors.$kobo-gray-92;
+
+      li {
+        text-transform: capitalize;
+        padding: 0;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid colors.$kobo-gray-92;
+        }
+
+        a {
+          padding: 10px 15px;
+        }
+      }
+    }
+  }
+
+  .account-box__menu-li--logout {
+    padding-top: 5px;
+  }
+}
+
+// Form title + desc in header, editable
+
+// On smaller screens we hide both of them
+.main-header .main-header__icon,
+.main-header .main-header__counter {
+  display: none;
+}
+
+.main-header {
+  .main-header__icon {
+    color: colors.$kobo-gray-65;
+    vertical-align: middle;
+
+    .k-icon {
+      font-size: 38px;
+    }
+  }
+
+  .main-header__title {
+    vertical-align: middle;
+    margin-right: 20px;
+    flex: 1;
+    align-items: center;
+    color: colors.$kobo-white;
+    font-size: 18px;
+
+    &.main-header__title--long input {
+      font-size: variables.$base-font-size;
+    }
+
+    input {
+      background: transparent;
+      border-left: none;
+      border-right: none;
+      border-bottom: 1px solid transparent;
+      border-top: 1px solid transparent;
+      color: colors.$kobo-white;
+      font-size: 18px;
+      margin: 0;
+      overflow: hidden;
+      padding: 3px 6px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+
+      // keep these pseudo-states separate
+      &::placeholder {
+        color: colors.$kobo-gray-40;
+      }
+
+      &:hover {
+        border-bottom: 1px solid colors.$kobo-blue;
+      }
+
+      &:focus {
+        background: rgba(colors.$kobo-white, 0.05);
+        border-bottom: 1px solid colors.$kobo-blue;
+      }
+    }
+  }
+
+  .main-header__counter {
+    font-size: variables.$base-font-size;
+    margin-right: 20px;
+    color: colors.$kobo-gray-65;
+  }
+}
+
+// Initials avatar, used in header, sharing modal and account settings
+.account-box__initials {
+  width: 32px;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 6px;
+  border-radius: 32px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 20px;
+  font-size: 16px;
+  color: colors.$kobo-white;
+}
+
+.account-box__menu-item--avatar {
+  .account-box__initials {
+    width: 48px;
+    padding: 10px;
+    border-radius: 48px;
+    line-height: 28px;
+    font-size: 24px;
+  }
+}
+
+.git-rev {
+  display: none;
+}
+
+@include breakpoints.breakpoint(mediumAndUp) {
+  .main-header .main-header__icon,
+  .main-header .main-header__counter {
+    display: initial;
+  }
+
+  .mdl-layout__header .mdl-layout__title {
+    // This makes sure the search box is aligned with right side content.
+    // We subtract the header bar paddings and the left margin of search box.
+    width: $s-drawer-width - 20px - 6px;
+  }
+
+  .mdl-layout__header .header__logo {
+    background-image: url("../img/kobologo.svg");
+    width: 180px;
+  }
+}
+
+@media (min-width: breakpoints.$bMobileMenu) {
+  .mdl-layout__header .mdl-layout__header-row {
+    padding: 0px 12px;
+  }
+}
+
+@media screen and (min-width: breakpoints.$b768) {
+  .git-rev {
+    display: block;
+    position: fixed;
+    bottom: 0px;
+    left: 80px;
+    z-index: 100;
+
+    .git-rev__item {
+      color: colors.$kobo-white;
+      opacity: 0.85;
+      background: darken(colors.$kobo-teal, 10%);
+      margin-top: 5px;
+      padding: 6px 12px;
+      display: block;
+      font-size: 12px;
+    }
+  }
+}
+
+// temporary fix for language menu on touch devices
+@media screen and (pointer: coarse) {
+  .account-box__menu .account-box__menu-li--lang {
+    ul {
+      opacity: 1;
+      position: static;
+      border: 1px solid colors.$kobo-gray-92;
+      margin-left: 12px;
+      padding: 0px;
+      max-height: 1000px;
+      box-shadow: none;
+
+      li {
+        padding: 6px 18px;
+      }
+    }
+  }
+}

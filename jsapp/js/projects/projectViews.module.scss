@@ -1,0 +1,40 @@
+@use 'scss/mixins';
+@use 'scss/sizes';
+@use '~kobo-common/src/styles/colors';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  @include mixins.centerRowFlex;
+  padding: sizes.$x30 sizes.$x30 sizes.$x40;
+  gap: sizes.$x10 sizes.$x30;
+  flex-wrap: wrap;
+}
+
+.actions {
+  @include mixins.centerRowFlex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  margin: sizes.$x24 sizes.$x24 0 sizes.$x24;
+  padding: sizes.$x12;
+  background-color: colors.$kobo-light-blue;
+  border-radius: sizes.$x5;
+  align-items: center;
+}
+
+.bannerIcon {
+  padding-right: sizes.$x18;
+}
+
+.bannerButton {
+  margin-left: auto;
+}

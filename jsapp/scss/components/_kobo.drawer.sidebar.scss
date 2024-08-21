@@ -1,0 +1,118 @@
+@use '~kobo-common/src/styles/colors';
+
+.form-sidebar-wrapper {
+  padding: 20px 14px;
+}
+
+
+.form-sidebar__navlink {
+  color: inherit;
+}
+
+.form-sidebar {
+  margin-top: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  color: colors.$kobo-gray-40;
+
+  &.form-sidebar--loading {
+    pointer-events: none;
+    opacity: 0.5;
+
+    .form-sidebar__label-count {
+      color: transparent;
+    }
+
+    .form-sidebar__label.form-sidebar__label--selected {
+      color: inherit;
+    }
+  }
+
+  .form-sidebar__label,
+  .form-sidebar__item {
+    cursor: pointer;
+  }
+
+  .form-sidebar__navlink {
+    color: colors.$kobo-gray-40;
+  }
+
+  .active {
+    color: colors.$kobo-gray-24;
+  }
+
+  .form-sidebar__label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 3px 0;
+    position: relative;
+    color: inherit;
+
+    &:hover {
+      color: colors.$kobo-gray-24;
+    }
+
+    &.form-sidebar__label--selected {
+      color: colors.$kobo-gray-24;
+    }
+
+    i {
+      font-size: 26px;
+      margin: 5px 4px 5px 1px;
+      display: inline-block;
+    }
+
+    .form-sidebar__label-text {
+      flex: 1;
+    }
+
+    .form-sidebar__label-count {
+      padding: 0 6px;
+      font-size: 12px;
+      line-height: 20px;
+      min-width: 20px;
+      border-radius: 20px;
+      background-color: colors.$kobo-gray-92;
+      text-align: center;
+      margin-right: 4px;
+    }
+  }
+
+  .form-sidebar__grouping {
+    margin-bottom: 10px;
+
+    &.form-sidebar__grouping--collapsed {
+      margin: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    // Makes the list scrollable if there are a lot of items.
+    &.form-sidebar__grouping--visible {
+      max-height: 30vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  }
+
+  .form-sidebar__item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    line-height: 15px;
+    color: colors.$kobo-gray-40;
+    font-weight: normal;
+    font-size: 12px;
+    padding: 5px;
+
+    &:hover {
+      color: colors.$kobo-gray-24;
+    }
+
+    &.form-sidebar__item--active {
+      background: #ededee;
+    }
+  }
+}

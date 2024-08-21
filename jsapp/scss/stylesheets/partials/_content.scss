@@ -1,0 +1,38 @@
+@use '~kobo-common/src/styles/colors';
+
+/* ==========================================================================
+ * Main
+ * ========================================================================== */
+
+.main {
+    transition: padding-left 150ms;
+    height: 100%;
+}
+
+.main > section.content {
+    height: 100%;
+    padding-top:40px;
+}
+
+/* ==========================================================================
+ * Content containers
+ * ========================================================================== */
+
+.container {
+    // max-width: 750px;
+    // replaces bootstrap's min-with with auto, fixes smaller windows with sidebars open
+    // width:auto;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    &.empty {
+      text-align: center;
+      background: colors.$kobo-white;
+      padding: 20px;
+    }
+}
+
+// Legacy
+.content--centered {
+  text-align: center;
+}

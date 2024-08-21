@@ -1,0 +1,22 @@
+.mandatory-setting {
+  .card__settings__fields__field > label {
+    vertical-align: top;
+    margin-top: 6px;
+  }
+
+  .mandatory-setting__row {
+    &.mandatory-setting__row--custom {
+      .mandatory-settings-input-wrapper {
+        margin-top: 5px;
+        display: block;
+      }
+
+      input[type='radio']:not(:checked) ~ .mandatory-settings-input-wrapper {
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+        margin-top: 0;
+      }
+    }
+  }
+}

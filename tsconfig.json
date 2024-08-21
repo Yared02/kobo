@@ -1,0 +1,35 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./jsapp",
+    "paths": {
+      "jsapp/*": ["./*"],
+      "js/*": ["js/*"],
+      "scss/*": ["scss/*"],
+      "test/*": ["test/*"],
+    },
+    "target": "es2017",
+    "module": "es2020",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "outDir": "out",
+    "jsx": "react",
+    "plugins": [{ "name": "typescript-plugin-css-modules"}]
+  },
+  "include": [
+    "jsapp/**/*.ts",
+    "jsapp/**/*.tsx"
+  ]
+}

@@ -1,0 +1,81 @@
+@use '~kobo-common/src/styles/colors';
+
+$message-box-icon-size: 28px;
+
+.form-builder-message-box {
+  width: 100%;
+  margin: 0 auto 20px;
+  background-color: colors.$kobo-gray-40;
+  color: colors.$kobo-white;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+
+  i {
+    color: colors.$kobo-white;
+    font-size: $message-box-icon-size;
+    margin-right: 5px;
+    vertical-align: -11px;
+    display: inline-block;
+  }
+
+  p {
+    margin: 0;
+    flex: 1;
+    padding: 0 5px;
+  }
+
+  span {
+    cursor: default;
+  }
+
+  .form-builder-message-box__toggle {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: colors.$kobo-light-blue;
+    cursor: pointer;
+
+    &:active {
+      transform: translateY(1px);
+    }
+
+    .k-icon {
+      color: inherit;
+      font-size: 18px;
+      vertical-align: middle;
+    }
+  }
+
+  .form-builder-message-box__details {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+
+.form-builder-message-box--warning {
+  background-color: colors.$kobo-light-amber;
+  color: colors.$kobo-dark-amber;
+
+  a {
+    width: $message-box-icon-size;
+    cursor: pointer;
+  }
+
+  i {
+    color: colors.$kobo-dark-amber;
+  }
+
+  p {
+    margin-left: 12px;
+    margin-right: 12px;
+    font-weight: 500;
+  }
+}

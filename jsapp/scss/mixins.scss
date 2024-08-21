@@ -1,0 +1,53 @@
+@use 'sass:color';
+@use 'scss/sizes';
+@use '~kobo-common/src/styles/colors';
+
+@mixin buttonReset() {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative; // needed for tooltips etc.
+  appearance: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  border: none;
+
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &:active {
+    // to make it look pressed-in
+    transform: translateY(sizes.$x1);
+  }
+}
+
+@mixin centerRowFlex() {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+}
+
+@mixin textEllipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// Use this for dropdowns and menus
+@mixin floatingRoundedBox() {
+  background-color: colors.$kobo-white;
+  border-radius: sizes.$x6;
+  box-shadow: 0 0 sizes.$x6 color.change(colors.$kobo-storm, $alpha: 0.3);
+}
+
+@mixin default-ui-focus() {
+  outline: sizes.$x3 solid colors.$kobo-mid-blue !important;
+  border-color: colors.$kobo-blue !important;
+}
